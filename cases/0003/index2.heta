@@ -1,0 +1,16 @@
+/*
+    Add substrate to reaction. Use mass action reaction.
+*/
+
+// compartments
+comp1 @Compartment .= 1;
+
+// species
+p1 @Species {compartment: comp1} .= 0;
+s1 @Species {compartment: comp1} .= 100;
+
+// reactions
+r1 @Reaction {actors: s1 => p1} := k1 * s1 * comp1;
+
+// parameters
+k1 @Const = 0.1;

@@ -1,0 +1,16 @@
+/*
+    Remove export.
+    Rename species to p1.
+*/
+
+// compartments
+comp1 @Compartment .= 1;
+
+// species
+p1 @Species {compartment: comp1} .= 0;
+
+// reactions
+r1 @Reaction {actors: => p1} := vsyn;
+
+// parameters
+vsyn @Const = 0.1;

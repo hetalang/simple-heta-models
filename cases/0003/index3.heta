@@ -1,0 +1,16 @@
+/*
+    Make s1 buffered (boundary) which means s1 does not change in time.
+*/
+
+// compartments
+comp1 @Compartment .= 1;
+
+// species
+p1 @Species {compartment: comp1} .= 0;
+s1 @Species {compartment: comp1, boundary: true} .= 100;
+
+// reactions
+r1 @Reaction {actors: s1 => p1} := k1 * s1 * comp1;
+
+// parameters
+k1 @Const = 0.1;

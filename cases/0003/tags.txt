@@ -2,3 +2,5 @@ simple
 qsp
 mass-action
 export
+boundary
+multiple-compartments
