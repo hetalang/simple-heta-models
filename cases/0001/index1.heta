@@ -1,0 +1,20 @@
+/*
+    Add another simple export formats
+*/
+
+// compartment of size 1
+comp1 @Compartment .= 1;
+
+// species with initial concentration 10
+s1 @Species {compartment: comp1} .= 10;
+
+// reaction of s1 degradation
+r1 @Reaction {actors: s1 => } := k1 * s1 * comp1;
+
+// constant of reaction
+k1 @Const = 0.01;
+
+// export format
+#export {format: SBML};
+#export {format: JSON};
+#export {format: YAML};

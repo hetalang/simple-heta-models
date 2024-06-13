@@ -1,0 +1,18 @@
+/*
+    Create simple Heta model with constant synthesis of some metabolite.
+*/
+
+// compartments
+comp1 @Compartment .= 1;
+
+// species
+m1 @Species {compartment: comp1} .= 0;
+
+// reactions
+r1 @Reaction {actors: => m1} := vsyn;
+
+// parameters
+vsyn @Const = 0.1;
+
+// export
+#export {format: SBML};

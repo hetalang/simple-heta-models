@@ -1,0 +1,39 @@
+/*
+    For the same model add as many as possible available export options.
+*/
+
+// compartment of size 1
+comp1 @Compartment .= 1;
+
+// species with initial concentration 10
+s1 @Species {compartment: comp1} .= 10;
+
+// reaction of s1 degradation
+r1 @Reaction {actors: s1 => } := k1 * s1 * comp1;
+
+// constant of reaction
+k1 @Const = 0.01;
+
+// export format
+// another directory name, long format of units
+#export {format: JSON, filepath: xxx, noUnitsExpr: true};
+// long format of units
+#export {format: YAML, noUnitsExpr: true};
+// use pow(x, y) instead of x^y in the output, group constants by the first tag, use old format of SLV file
+#export {format: DBSolve, powTransform: function, groupConstBy: "tags[0]", version: 25};
+// use Level 3 version 2
+#export {format: SBML, version: L3V2};
+// another directory name for output directory
+#export {format: Simbio, filepath: yyy};
+// another directory name for output directory
+#export {format: Mrgsolve, filepath: zzz};
+// omit 3 rows between header and data, use multiple sheets in the output
+#export {format: Table, omitRows: 3, bookType: xlsx};
+// another directory name for output directory
+#export {format: Julia, filepath: www};
+// another directory name for output directory
+#export {format: Matlab, filepath: qqq};
+// another directory name for output directory
+#export {format: Dot, filepath: ppp};
+// another directory name for output directory
+#export {format: Summary, filepath: ooo};
