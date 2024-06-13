@@ -1,0 +1,26 @@
+/*
+  Do not use units from qsp-units.heta. Use only base units.
+*/
+
+// default time
+t {units: second};
+
+// compartment of size 1
+comp1 @Compartment {units: litre} .= 1;
+
+// substrate and product species
+s1 @Species {compartment: comp1, units: (1e-6 mole)/litre} .= 100;
+p1 @Species {compartment: comp1, units: (1e-6 mole)/litre} .= 0;
+
+// reaction
+r1 @Reaction {actors: s1 -> p1, reversible: true, units: (1e-6 mole)/second}; 
+r1 := kcat * (s1 - p1/Keq) / (Km_s1 + s1 + Km_s1 / Km_p1 * p1) * comp1;
+
+// reaction constant
+kcat @Const {units: (1e-6 mole)/litre/second} = 0.1;
+Km_s1 @Const {units: (1e-6 mole)/litre} = 0.5;
+Km_p1 @Const {units: (1e-6 mole)/litre} = 1.1;
+Keq @Const {units: dimensionless} = 10;
+
+// export format
+#export {format: SBML};

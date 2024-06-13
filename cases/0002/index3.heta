@@ -1,0 +1,29 @@
+/*
+  Add units to all components.
+  Units can be taken from qsp-units.heta from default template.
+*/
+
+include ./qsp-units.heta;
+
+// default time
+t {units: s};
+
+// compartment of size 1
+comp1 @Compartment {units: L} .= 1;
+
+// substrate and product species
+s1 @Species {compartment: comp1, units: uM} .= 100;
+p1 @Species {compartment: comp1, units: uM} .= 0;
+
+// reaction
+r1 @Reaction {actors: s1 -> p1, reversible: true, units: umole/s}; 
+r1 := kcat * (s1 - p1/Keq) / (Km_s1 + s1 + Km_s1 / Km_p1 * p1) * comp1;
+
+// reaction constant
+kcat @Const {units: uM/s} = 0.1;
+Km_s1 @Const {units: uM} = 0.5;
+Km_p1 @Const {units: uM} = 1.1;
+Keq @Const {units: UL} = 10;
+
+// export format
+#export {format: SBML};

@@ -1,0 +1,20 @@
+/*
+  Use Michaelis-Menten type reaction for r1.
+*/
+
+// compartment of size 1
+comp1 @Compartment .= 1;
+
+// substrate and product species
+s1 @Species {compartment: comp1} .= 100;
+p1 @Species {compartment: comp1} .= 0;
+
+// reaction
+r1 @Reaction {actors: s1 -> p1} := Vmax * s1 / (Km + s1) * comp1;
+
+// reaction constant
+Vmax @Const = 0.1;
+Km @Const = 0.5;
+
+// export format
+#export {format: SBML};

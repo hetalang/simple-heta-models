@@ -1,0 +1,23 @@
+/*
+  Replace non-reversible Michaelis-Menten (MM) kinetics by reversible Michaelis-Menten kinetics.
+*/
+
+// compartment of size 1
+comp1 @Compartment .= 1;
+
+// substrate and product species
+s1 @Species {compartment: comp1} .= 100;
+p1 @Species {compartment: comp1} .= 0;
+
+// reaction
+r1 @Reaction {actors: s1 -> p1, reversible: true}; 
+r1 := Vmax * (s1 - p1/Keq) / (Km_s1 + s1 + Km_s1 / Km_p1 * p1) * comp1;
+
+// reaction constant
+Vmax @Const = 0.1;
+Km_s1 @Const = 0.5;
+Km_p1 @Const = 1.1;
+Keq @Const = 10;
+
+// export format
+#export {format: SBML};
