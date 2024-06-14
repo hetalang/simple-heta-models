@@ -1,0 +1,41 @@
+name: Test cases
+
+on:
+  push:
+    branches: [ master, '*' ]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 18.x
+            uses: actions/setup-node@v3
+            with:
+              node-version: 18.x
+
+      - name: Install heta-compiler
+        run: |
+          npm install heta-compiler
+          npx heta-compiler --version
+
+      - name: Scan cases and run tests
+        run: |
+          files=$(find ./cases/*/index*.heta)
+          flag=0
+          for file in $files; do
+            echo -n "Processing $(basename $file) in directory $(dirname $file)... "
+            npx heta build --skip-updates --units-check -s $(basename $file) $(dirname $file) >> null
+            if [ $? -ne 0 ]; then
+                echo "ERROR!"
+                flag=1
+            else
+                echo "OK"
+            fi
+          done
+          if [ $flag -ne 0 ]; then
+            exit 1
+          fi
+
