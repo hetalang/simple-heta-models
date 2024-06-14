@@ -22,7 +22,6 @@ jobs:
           npx heta --version
 
       - name: Scan cases and run tests
-        console: bash
         run: |
           files=$(find ./cases/*/index*.heta)
           flag=0
