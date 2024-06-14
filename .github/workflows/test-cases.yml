@@ -19,7 +19,7 @@ jobs:
       - name: Install heta-compiler
         run: |
           npm install heta-compiler
-          npx heta-compiler --version
+          npx heta --version
 
       - name: Scan cases and run tests
         run: |
