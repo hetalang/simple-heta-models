@@ -1,6 +1,7 @@
 /*
   Use Michaelis-Menten type reaction for r1.
 */
+// index.heta
 
 // compartment of size 1
 comp1 @Compartment .= 1;

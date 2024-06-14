@@ -1,0 +1,17 @@
+/*
+    Add product with stoicheometry 1
+*/
+// index.heta
+
+// compartments
+comp1 @Compartment .= 1;
+
+// species
+s1 @Species {compartment: comp1} .= 100;
+p1 @Species {compartment: comp1} .= 0;
+
+// reactions
+r1 @Reaction {actors: 2s1 => p1} := k1 * s1^2 * comp1;
+
+// constants
+k1 @Const = 0.01;

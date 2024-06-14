@@ -1,6 +1,7 @@
 /*
     Make s1 buffered (boundary) which means s1 does not change in time.
 */
+// index.heta
 
 // compartments
 comp1 @Compartment .= 1;

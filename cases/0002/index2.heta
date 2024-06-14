@@ -1,6 +1,7 @@
 /*
   Replace non-reversible Michaelis-Menten (MM) kinetics by reversible Michaelis-Menten kinetics.
 */
+// index.heta
 
 // compartment of size 1
 comp1 @Compartment .= 1;

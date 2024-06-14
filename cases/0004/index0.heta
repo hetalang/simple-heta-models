@@ -1,0 +1,16 @@
+/*
+    Create Heta model with one substrate and zero product with mass-action law.
+*/
+// index.heta
+
+// compartments
+comp1 @Compartment .= 1;
+
+// species
+s1 @Species {compartment: comp1} .= 100;
+
+// reactions
+r1 @Reaction {actors: s1 =>} := k1 * s1 * comp1;
+
+// constants
+k1 @Const = 0.01;

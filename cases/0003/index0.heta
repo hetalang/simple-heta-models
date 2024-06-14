@@ -1,6 +1,7 @@
 /*
     Create simple Heta model with constant synthesis of some metabolite.
 */
+// index.heta
 
 // compartments
 comp1 @Compartment .= 1;

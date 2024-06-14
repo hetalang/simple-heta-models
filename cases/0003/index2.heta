@@ -1,6 +1,7 @@
 /*
     Add substrate to reaction. Use mass action reaction.
 */
+// index.heta
 
 // compartments
 comp1 @Compartment .= 1;

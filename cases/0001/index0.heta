@@ -2,6 +2,7 @@
     Create the simplest QSP model in Heta notation.
     Something like "hello world" in programming.
 */
+// index.heta
 
 // compartment of size 1
 comp1 @Compartment .= 1;

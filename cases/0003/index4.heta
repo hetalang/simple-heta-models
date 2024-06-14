@@ -1,6 +1,7 @@
 /*
     Put s1 and p1 into two different compartments
 */
+// index.heta
 
 // compartments
 comp1 @Compartment .= 1;

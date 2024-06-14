@@ -1,6 +1,7 @@
 /*
     For the same model add as many as possible available export options.
 */
+// index.heta
 
 // compartment of size 1
 comp1 @Compartment .= 1;

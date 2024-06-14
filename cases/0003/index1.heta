@@ -2,6 +2,7 @@
     Remove export.
     Rename species to p1.
 */
+// index.heta
 
 // compartments
 comp1 @Compartment .= 1;

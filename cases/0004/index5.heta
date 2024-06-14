@@ -1,0 +1,31 @@
+/*
+    Ad units of measurments for all.
+    Use short designation for units
+*/
+// index.heta
+
+// units
+#defineUnit s {units: second};
+#defineUnit L {units: litre};
+#defineUnit uM {units: (1e-6 mole)/litre};
+#defineUnit umole {units: (1e-6 mole)};
+
+// time
+t {units: s};
+
+// compartments
+comp1 @Compartment {units: L} .= 1;
+
+// species
+s1 @Species {compartment: comp1, units: uM} .= 100;
+s2 @Species {compartment: comp1, units: uM} .= 10;
+p1 @Species {compartment: comp1, units: uM} .= 10;
+p2 @Species {compartment: comp1, units: uM} .= 0;
+
+// reactions
+r1 @Reaction {actors: 2s1 + 3s2 <=> p1 + p2, units: umole/s}; 
+r1 := (k1 * s1^2 * s2^3 - k2 * p1 * p2) * comp1;
+
+// constants
+k1 @Const {units: 1/s/uM^4} = 0.01;
+k2 @Const {units: 1/s/uM} = 0.001;

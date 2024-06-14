@@ -2,6 +2,7 @@
   Create simple kinetic model with two species and one reaction in Heta notation.
   Mass action kinetics is used.
 */
+// index.heta
 
 // compartment of size 1
 comp1 @Compartment .= 1;
