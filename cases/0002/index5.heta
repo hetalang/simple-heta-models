@@ -30,6 +30,3 @@ kcat @Const {units: uM/s} = 0.1;
 Km_s1 @Const {units: uM} = 0.5;
 Km_p1 @Const {units: uM} = 1.1;
 Keq @Const {units: UL} = 10;
-
-// export format
-#export {format: SBML};

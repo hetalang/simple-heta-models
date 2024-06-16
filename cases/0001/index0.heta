@@ -16,6 +16,3 @@ r1 @Reaction {actors: s1 => } := k1 * s1 * comp1;
 
 // constant of reaction
 k1 @Const = 0.01;
-
-// export format
-#export {format: SBML};

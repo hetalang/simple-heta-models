@@ -19,6 +19,3 @@ Vmax @Const = 0.1;
 Km_s1 @Const = 0.5;
 Km_p1 @Const = 1.1;
 Keq @Const = 10;
-
-// export format
-#export {format: SBML};
