@@ -1,5 +1,5 @@
 /*
-  Replace non-reversible Michaelis-Menten (MM) kinetics by reversible Michaelis-Menten kinetics.
+  Create simple Heta model with reversible Michaelis-Menten (MM) kinetics.
 */
 // index.heta
 
@@ -12,7 +12,7 @@ p1 @Species {compartment: comp1} .= 0;
 
 // reaction
 r1 @Reaction {actors: s1 -> p1, reversible: true}; 
-r1 := Vmax * (s1 - p1/Keq) / (Km_s1 + s1 + Km_s1 / Km_p1 * p1) * comp1;
+r1 := Vmax * (s1 - p1 / Keq) / (Km_s1 + s1 + Km_s1 / Km_p1 * p1) * comp1;
 
 // reaction constant
 Vmax @Const = 0.1;

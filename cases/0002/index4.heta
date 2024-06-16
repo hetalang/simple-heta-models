@@ -1,5 +1,6 @@
 /*
-  Do not use units from qsp-units.heta. Use only base units.
+  Create reversible MM kinetics model with 1 substrate and 1 product.
+  Set units for all quantities without defineUnits. Units must be: second, micro moles, litre, etc.
 */
 // index.heta
 

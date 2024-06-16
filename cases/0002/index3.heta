@@ -1,6 +1,6 @@
 /*
-  Add units to all components.
-  Units can be taken from qsp-units.heta from default template.
+  Create simple model with reversible MM.
+  Add units to all components from qsp-units.heta from default template.
 */
 // index.heta
 

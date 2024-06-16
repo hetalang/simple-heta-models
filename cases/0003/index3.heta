@@ -1,5 +1,5 @@
 /*
-    Make s1 buffered (boundary) which means s1 does not change in time.
+    Create Heta model where product is transformed from boundary (buffered) species.
 */
 // index.heta
 

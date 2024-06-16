@@ -1,6 +1,7 @@
 /*
-    Ad units of measurments for all.
-    Use short designation for units
+    Create Heta model with reversible reaction and stoicheometry: 2s1 + 3s2 <=> p1 + p2.
+    Use mass action law.
+    Define units for time, volume, and concentration.
 */
 // index.heta
 
