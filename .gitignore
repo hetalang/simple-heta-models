@@ -1,6 +1,4 @@
 build.log
 dist
 node_modules
-package-lock.json
-package.json
 draft

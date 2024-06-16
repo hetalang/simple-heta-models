@@ -16,9 +16,9 @@ jobs:
         with:
           node-version: 18.x
 
-      - name: Install heta-compiler
+      - name: Install heta-compiler and others
         run: |
-          npm install heta-compiler
+          npm ci
           npx heta --version
 
       - name: Scan cases and run tests
