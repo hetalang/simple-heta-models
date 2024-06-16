@@ -1,5 +1,5 @@
 /*
-    Write Heta model with reaction where substrate is transformed to product with stoichiometry 2:1.
+    Write complete Heta model with reaction where substrate is transformed to product with stoichiometry 2:1.
 */
 // index.heta
 

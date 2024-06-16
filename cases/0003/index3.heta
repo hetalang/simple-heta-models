@@ -1,5 +1,5 @@
 /*
-    Create Heta model where product is transformed from boundary (buffered) species.
+    Create complete Heta model where product is transformed from boundary (buffered) species.
 */
 // index.heta
 

@@ -1,5 +1,5 @@
 /*
-    Build Heta model which desribes the transport of a substance from one compartment to another.
+    Build complete Heta model which desribes the transport of a substance from one compartment to another.
     The concentration of source species is constant and the transport is described by a first order reaction.
 */
 // index.heta

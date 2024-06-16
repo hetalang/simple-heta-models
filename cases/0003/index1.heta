@@ -1,6 +1,5 @@
 /*
-    Do not use export action.
-    Create Heta model for constant production of species p1 in compartment comp1.
+    Create complete Heta model for constant production of species p1 in compartment comp1.
 */
 // index.heta
 

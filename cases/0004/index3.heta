@@ -1,5 +1,5 @@
 /*
-    Create a Heta model with a single compartment, and reaction with stoicheometry
+    Create a complete Heta model with a single compartment, and reaction with stoicheometry
     2s1 + 3s2 => p1 + p2 
 */
 // index.heta

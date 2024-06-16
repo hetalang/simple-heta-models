@@ -1,5 +1,5 @@
 /*
-  Create simple Heta model with reversible Michaelis-Menten (MM) kinetics.
+  Create complete simple Heta model with reversible Michaelis-Menten (MM) kinetics.
 */
 // index.heta
 

@@ -1,5 +1,5 @@
 /*
-    Create the simplest QSP model in Heta notation.
+    Create the complete (full) simplest QSP model in Heta notation.
     Something like "hello world" in programming.
     One compartment, one species, one reaction with mass action.
 */

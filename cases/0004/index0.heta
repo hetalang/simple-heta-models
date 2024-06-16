@@ -1,5 +1,5 @@
 /*
-    Create Heta model with one substrate and zero product with mass-action law.
+    Create complete Heta model with one substrate and zero product with mass-action law.
 */
 // index.heta
 

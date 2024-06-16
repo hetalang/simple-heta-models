@@ -1,5 +1,5 @@
 /*
-  Create simple model with reversible MM.
+  Create simple complete Heta model with reversible MM.
   Use short names for units like in qsp-units.heta
 */
 // index.heta

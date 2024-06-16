@@ -1,5 +1,5 @@
 /*
-    Create Heta model with reversible reaction and stoicheometry: 2s1 + 3s2 <=> p1 + p2.
+    Create complete Heta model with reversible reaction and stoicheometry: 2s1 + 3s2 <=> p1 + p2.
     Use mass action law.
 */
 // index.heta

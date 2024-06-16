@@ -1,5 +1,5 @@
 /*
-  Create simple kinetic model with two species and one reaction in Heta notation.
+  Create complete simple kinetic model with two species and one reaction in Heta notation.
   Mass action kinetics is used.
 */
 // index.heta

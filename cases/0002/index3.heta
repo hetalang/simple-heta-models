@@ -1,5 +1,5 @@
 /*
-  Create simple model with reversible MM.
+  Create complete simple model with reversible MM.
   Add units to all components from qsp-units.heta from default template.
 */
 // index.heta
