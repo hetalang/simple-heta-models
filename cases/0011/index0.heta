@@ -1,0 +1,21 @@
+/*
+    Create complete Heta model with two reactions with stoicheometry: A + 2B => C and C => D.
+*/
+// index.heta
+
+// reactions
+r1 @Reaction {actors: A + 2B => C} := k1 * A * B^2 * comp1;
+r2 @Reaction {actors: C => D} := k2 * C * comp1;
+
+// species
+A @Species {compartment: comp1} .= 1;
+B @Species {compartment: comp1} .= 10;
+C @Species {compartment: comp1} .= 0;
+D @Species {compartment: comp1} .= 0;
+
+// compartments
+comp1 @Compartment .= 1;
+
+// parameters
+k1 @Const = 0.01;
+k2 @Const = 0.001;

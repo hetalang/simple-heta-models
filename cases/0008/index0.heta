@@ -1,0 +1,6 @@
+/*
+  Create mass-action reaction in Heta notation by the stoicheometry: 2s1 => p1.
+*/
+
+// reactions
+r1 @Reaction {actors: 2s1 => p1} := k1 * s1^2 * comp1;

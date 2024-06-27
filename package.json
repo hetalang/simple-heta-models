@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "glob": "^10.4.2",
+    "heta-compiler": "^0.8.4"
+  }
+}

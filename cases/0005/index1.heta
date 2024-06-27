@@ -1,0 +1,17 @@
+/*
+    Add all necessary components: species, compartments, and constants.
+*/
+// index.heta
+
+// reaction of s1 degradation
+r1 @Reaction {actors: s1 => p1} := k1 * s1 * comp1;
+
+// species 
+s1 @Species {compartment: comp1} .= 10;
+p1 @Species {compartment: comp1} .= 0;
+
+// compartment of size 1
+comp1 @Compartment .= 1;
+
+// constant of reaction
+k1 @Const = 0.01;

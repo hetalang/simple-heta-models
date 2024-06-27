@@ -1,0 +1,9 @@
+/*
+  Add necessary species
+*/
+
+// reactions
+r1 @Reaction {actors: => p1} := k1 * comp1;
+
+// species
+p1 @Species {compartment: comp1} .= 0;

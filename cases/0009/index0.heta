@@ -1,0 +1,7 @@
+/*
+  Create mass-action reversible reaction in Heta notation by the stoicheometry: 2s1 => 2p1.
+*/
+// index.heta
+
+// reactions
+r1 @Reaction {actors: 2s1 => p1} := (k1 * s1^2 - k2 * p1^2) * comp1;
