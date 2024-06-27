@@ -3,7 +3,7 @@ const fs = require('fs');
 const { globSync } = require('glob');
 const systemPrompt = `
     You will be provided with description of dynamic model, and your task is to create model in Heta format.
-    Try not to create supplementary text, only model and comments.
+    Don't create supplementary text, only code and comments.
 `;
 
 const directoryPath = './cases';
@@ -29,6 +29,28 @@ let lines = directories.map((directory) => {
     });
 
     return JSON.stringify({messages});
-}).join('\n');;
+}).join('\n');
 
 fs.writeFileSync('training.jsonl', lines);
+
+let lines2 = fs.readdirSync(validationPath, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name)
+    .map((directory) => {
+        const files = globSync(pattern, { cwd: path.join(validationPath, directory) }).sort();
+        let messages = [{role: 'system', content: systemPrompt}];
+
+        files.forEach((file) => {
+            const filePath = path.join(validationPath, directory, file);
+            const content = fs.readFileSync(filePath, 'utf8');
+            let matches = content.match(/\/\*([\s\S]*)\*\/([\s\S]*)/);
+            let prompt = matches[1].replace(/\s+/g, ' ');
+            let completion = matches[2].replace(/^[\s]+/, '').replace(/\r/g, '');
+            messages.push({role: 'user', content: prompt});
+            messages.push({role: 'assistant', content: completion});
+        });
+
+        return JSON.stringify({messages});
+}).join('\n');
+
+fs.writeFileSync('validation.jsonl', lines2);
