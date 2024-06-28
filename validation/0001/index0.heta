@@ -1,5 +1,5 @@
 /*
-  Create mass-action reaction in Heta notation by the stoicheometry: 2s1 + s2 => 2p1 + p2.
+  Create mass-action reaction in Heta notation with the stoicheometry: 2s1 + s2 => 2p1 + p2.
 */
 
 // reactions

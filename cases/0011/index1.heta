@@ -1,11 +1,11 @@
 /*
-    Create complete Heta model with two reactions with stoicheometry: A + 2B => C and C => D.
+    Make reactions reversibles
 */
 // index.heta
 
 // reactions
-r1 @Reaction {actors: A + 2B => C} := k1 * A * B^2 * comp1;
-r2 @Reaction {actors: C => D} := k2 * C * comp1;
+r1 @Reaction {actors: A + 2B => C} := (k1 * A * B^2 - k3 * C) * comp1;
+r2 @Reaction {actors: C => D} := (k2 * C - k4 * D) * comp1;
 
 // species
 A @Species {compartment: comp1} .= 1;
@@ -19,3 +19,5 @@ comp1 @Compartment .= 1;
 // parameters
 k1 @Const = 0.01;
 k2 @Const = 0.001;
+k3 @Const = 0.001;
+k4 @Const = 0.001;
