@@ -5,3 +5,5 @@ draft
 
 training.jsonl
 validation.jsonl
+
+.env

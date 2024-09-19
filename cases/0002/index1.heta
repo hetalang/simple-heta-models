@@ -16,6 +16,3 @@ r1 @Reaction {actors: s1 -> p1} := Vmax * s1 / (Km + s1) * comp1;
 // reaction constant
 Vmax @Const = 0.1;
 Km @Const = 0.5;
-
-// export format
-#export {format: SBML};

@@ -22,6 +22,3 @@ kcat @Const {units: (1e-6 mole)/litre/second} = 0.1;
 Km_s1 @Const {units: (1e-6 mole)/litre} = 0.5;
 Km_p1 @Const {units: (1e-6 mole)/litre} = 1.1;
 Keq @Const {units: dimensionless} = 10;
-
-// export format
-#export {format: SBML};
