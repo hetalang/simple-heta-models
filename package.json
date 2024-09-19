@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "dotenv": "^16.4.5",
     "glob": "^10.4.2",
-    "heta-compiler": "^0.8.4"
+    "heta-compiler": "^0.8.4",
+    "openai": "^4.62.1"
   }
 }
