@@ -27,7 +27,7 @@ jobs:
           flag=0
           for file in $files; do
             echo -n "Processing $(basename $file) in directory $(dirname $file)... "
-            npx heta build --skip-updates --units-check -s $(basename $file) $(dirname $file) > /dev/null 2>&1
+            npx heta build --export SBML,JSON --skip-updates --units-check -s $(basename $file) $(dirname $file) > /dev/null 2>&1
             if [ $? -ne 0 ]; then
                 echo "ERROR!"
                 flag=1
@@ -38,4 +38,3 @@ jobs:
           if [ $flag -ne 0 ]; then
             exit 1
           fi
-
