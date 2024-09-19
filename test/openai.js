@@ -11,15 +11,16 @@ const openai = new OpenAI({
 });
 
 async function main() {
-    const completion = await openai.completions.create({
-        // davinci-002, gpt-3.5-turbo-instruct, babbage-002 - default models
-        model: 'ft:babbage-002:personal:simple-heta:9am9znES', // ft:babbage-002:personal:simple-heta:9am9znES
-        //prompt: "What is the capital of the United Kingdom?",
-        prompt: `Create complete Heta model with stoichiometry 1A + 2D <=> 3C + 4F.`,
-        max_tokens: 1024,
-        temperature: 0.1,
+    const completion = await openai.chat.completions.create({
+        model: 'ft:gpt-4o-mini-2024-07-18:insysbio-cy-limited:simple-heta:A978G89m', // gpt-4o-mini
+        messages: [
+            {role: 'system', content: 'You write modeling code in Heta format. Write only code not comments.'},
+            {role: 'user', content: 'Create complete Heta model with stoichiometry 1A + 2D <=> 3C + 4F.'}
+        ],
+        //max_tokens: 1024,
+        //temperature: 0.1,
     });
-    console.log(completion.choices[0].text);
+    console.log(completion.choices[0].message.content);
 }
 
 main();
