@@ -10,11 +10,11 @@ Vd @Compartment {units: litre} .= 5.5;
 
 // species
 ''' Drug concentration in the central compartment '''
-c1 @Species {compartment: Vd, units: gram, isAmount: true} .= 0;
+C1 @Species {compartment: Vd, units: gram/litre} .= 0;
 
 // reactions
 ''' Drug elimination from the central compartment (first-order law) '''
-r1 @Reaction {actors: => c1, units: gram/hour} := kel * c1;
+r1 @Reaction {actors: => C1, units: gram/hour} := kel * C1 * Vd;
 
 // parameters
 ''' Drug clearance '''
@@ -23,4 +23,4 @@ Dose @Const {units: gram} = 1e-3;
 
 // Dose
 sw1 @TimeSwitcher { start: 0, period: 12 };
-c1 [sw1]= Dose;
+C1 [sw1]= Dose / Vd;

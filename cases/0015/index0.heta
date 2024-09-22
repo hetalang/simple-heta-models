@@ -1,0 +1,37 @@
+/*
+    Create PK model for oral drug with saturable elimination.
+*/
+// index.heta
+t {units: hour};
+
+// compartments
+''' Central compartment volume '''
+Vd @Compartment {units: litre} .= 5.5;
+
+// species
+''' Drug amount in gut compartment '''
+A0 @Species {compartment: Vd, units: gram, isAmount: true} .= 0;
+''' Drug concentration in the central compartment '''
+C1 @Species {compartment: Vd, units: gram/litre } .= 0;
+
+// reactions
+''' Drug absorption from the gut compartment (first-order law) '''
+r0 @Reaction {actors: A0 => C1, units: gram/hour} := kabs * A0;
+''' Drug elimination from the central compartment (first-order law) '''
+r1 @Reaction {actors: => C1, units: gram/hour} := Vmax * C1 / (Km + C1) * Vd;
+
+// parameters
+''' Drug clearance '''
+Vmax @Const {units: gram/litre/hour} = 1e-1;
+''' Michaelis-Menten constant '''
+Km @Const {units: gram/litre} = 1e-1;
+''' Intravenous drug dose '''
+Dose @Const {units: gram} = 1e-3;
+''' Absorption rate constant '''
+kabs @Const {units: 1/hour} = 1e-2;
+''' Bioavailability '''
+BA @Const {units: 1} = 0.9;
+
+// Injection event
+sw1 @TimeSwitcher { start: 0, period: 24 };
+A0 [sw1]= BA * Dose;
