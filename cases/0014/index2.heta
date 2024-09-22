@@ -1,0 +1,40 @@
+/*
+    Apply nanomole units instead of nmole.
+*/
+// units
+#defineUnit nmole {
+    units: (1e-9 mole)
+};
+
+// index.heta
+t {units: hour};
+
+// compartments
+''' Central compartment volume '''
+Vd @Compartment {units: litre} .= 5.5;
+
+// species
+''' Drug amount in gut compartment '''
+A0 @Species {compartment: Vd, units: nmole, isAmount: true} .= 0;
+''' Drug amount in the central compartment '''
+C1 @Species {compartment: Vd, units: nmole/litre} .= 0;
+
+// reactions
+''' Drug absorption from the gut compartment (first-order law) '''
+r0 @Reaction {actors: A0 => C1, units: nmole/hour} := kabs * A0;
+''' Drug elimination from the central compartment (first-order law) '''
+r1 @Reaction {actors: => C1, units: nmole/hour} := CL * C1;
+
+// parameters
+''' Drug clearance '''
+CL @Const {units: litre/hour} = 1e-1;
+''' Intravenous drug dose '''
+Dose @Const {units: nmole} = 1e-3;
+''' Absorption rate constant '''
+kabs @Const {units: 1/hour} = 1e-2;
+''' Bioavailability '''
+BA @Const {units: 1} = 0.9;
+
+// Injection event
+sw1 @TimeSwitcher { start: 0, period: 24, stop: 168 };
+A0 [sw1]= BA * Dose;

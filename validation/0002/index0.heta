@@ -1,0 +1,43 @@
+/*
+    Create two compertement pharmacokinetic (PK) model with oral administration.
+*/
+// index.heta
+t {units: hour};
+
+// compartments
+''' Central compartment volume '''
+Vd @Compartment {units: litre} .= 5.5;
+''' Peripheral compartment volume '''
+V2 @Compartment {units: litre} .= 1;
+
+// species
+''' Drug amount in gut compartment '''
+A0 @Species {compartment: Vd, units: gram, isAmount: true} .= 0;
+''' Drug concentration in the central compartment '''
+C1 @Species {compartment: Vd, units: gram/litre} .= 0;
+''' Drug amount in the peripheral compartment '''
+A2 @Species {compartment: V2, units: gram, isAmount: true} .= 0;
+
+// reactions
+''' Drug absorption from the gut compartment (first-order law) '''
+r0 @Reaction {actors: A0 => C1, units: gram/hour} := kabs * A0;
+''' Drug elimination from the central compartment (first-order law) '''
+r1 @Reaction {actors: => C1, units: gram/hour} := CL * C1;
+''' Drug transfer from the central to the peripheral compartment and back (first-order law) '''
+r2 @Reaction {actors: C1 <=> A2, units: gram/hour} := k12 * C1 * Vd - k21 * A2;
+
+// parameters
+''' Absorption rate constant '''
+kabs @Const {units: 1/hour} = 1e-1;
+''' Drug clearance '''
+CL @Const {units: litre/hour} = 1e-1;
+''' Intravenous drug dose '''
+Dose @Const {units: gram} = 1e-3;
+''' Transfer rate from the central to the peripheral compartment '''
+k12 @Const {units: 1/hour} = 1e-1;
+''' Transfer rate from the peripheral to the central compartment '''
+k21 @Const {units: 1/hour} = 1e-1;
+
+// Injection event
+sw1 @TimeSwitcher { start: 0 };
+A0 [sw1]= Dose;
