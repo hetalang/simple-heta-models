@@ -1,0 +1,40 @@
+/*
+    Create one compertement classic pharmacokinetic (PK) model.
+    Use also pharacodynamic (PD) model with Threshold Effect Model.
+*/
+// index.heta
+t {units: hour};
+
+// compartments
+''' Central compartment volume '''
+Vd @Compartment {units: litre} .= 5.5;
+
+// species
+''' Drug amount in the central compartment '''
+C1 @Species {compartment: Vd, units: gram/litre} .= 0;
+
+// reactions
+''' Drug elimination from the central compartment (first-order law) '''
+r1 @Reaction {actors: => C1, units: gram/hour} := CL * C1;
+
+// parameters
+''' Drug clearance '''
+CL @Const {units: litre/hour} = 1e-1;
+''' Intravenous drug dose '''
+Dose @Const {units: gram} = 1e-3;
+''' Absorption rate constant '''
+kabs @Const {units: 1/hour} = 1e-2;
+''' Bioavailability '''
+BA @Const {units: 1} = 0.9;
+
+// Injection event
+sw1 @TimeSwitcher { start: 0, period: 24 };
+C1 [sw1]= Dose / Vd;
+
+// drug effects
+
+''' Threshold Effect Model '''
+E1 @Record {units: 1} := C1 < C_ts ? 0 : Emax * (C1 - C_ts) / (EC50 + C1 - C_ts);
+C_ts @Const {units: gram/litre} = 1e-1;
+Emax @Const {units: 1} = 1;
+EC50 @Const {units: gram/litre} = 1e-1;
