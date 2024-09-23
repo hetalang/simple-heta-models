@@ -1,0 +1,55 @@
+/*
+    Create one compertement classic pharmacokinetic (PK) model.
+    Use also pharacodynamic (PD) model with different effects: linear, Emax, sigmoidal (Hill), logarithmic.
+*/
+// index.heta
+t {units: hour};
+
+// compartments
+''' Central compartment volume '''
+Vd @Compartment {units: litre} .= 5.5;
+
+// species
+''' Drug amount in the central compartment '''
+C1 @Species {compartment: Vd, units: gram/litre} .= 0;
+
+// reactions
+''' Drug elimination from the central compartment (first-order law) '''
+r1 @Reaction {actors: => C1, units: gram/hour} := CL * C1;
+
+// parameters
+''' Drug clearance '''
+CL @Const {units: litre/hour} = 1e-1;
+''' Intravenous drug dose '''
+Dose @Const {units: gram} = 1e-3;
+''' Absorption rate constant '''
+kabs @Const {units: 1/hour} = 1e-2;
+''' Bioavailability '''
+BA @Const {units: 1} = 0.9;
+
+// Injection event
+sw1 @TimeSwitcher { start: 0, period: 24 };
+C1 [sw1]= Dose / Vd;
+
+// drug effects
+
+''' Linear Drug effect '''
+E1 @Record {units: 1} := sens * C1;
+sens @Const {units: 1/gram*litre} = 1e-1;
+
+''' Emax Drug effect '''
+E2 @Record {units: 1} := Emax_2 * C1 / (EC50_2 + C1);
+Emax_2 @Const {units: 1} = 1;
+EC50_2 @Const {units: gram/litre} = 1e-1;
+
+''' Hill Drug effect '''
+E3 @Record {units: 1} := Emax_3 * (C1 / EC50_3)^n / (1 + (C1 / EC50_3)^n);
+n @Const {units: 1} = 2;
+Emax_3 @Const {units: 1} = 1;
+EC50_3 @Const {units: gram/litre} = 1e-1;
+
+''' Logarithmic Drug effect '''
+E4 @Record {units: 1} := a_4 + b_4 * log(C1 / EC50_4);
+a_4 @Const {units: 1} = 1;
+b_4 @Const {units: 1} = 1;
+EC50_4 @Const {units: gram/litre} = 1e-1;
