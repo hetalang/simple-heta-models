@@ -4,6 +4,8 @@
     x1 + x4 <=> x5
 */
 
+#setNS nameless {type: abstract};
+
 // reactions
 r1 @Reaction {actors: x1 + 3x2 <=> x3} := (k1 * x1 * x2^3 - k2 * x3) * comp1;
 r2 @Reaction {actors: x1 + x4 <=> x5} := (k3 * x1 * x4 - k4 * x5) * comp1;

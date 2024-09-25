@@ -2,5 +2,7 @@
   Create reaction with no substrate and one product in Heta.
 */
 
+#setNS nameless {type: abstract};
+
 // reactions
 r1 @Reaction {actors: => p1} := k1 * comp1;

@@ -3,5 +3,7 @@
 */
 // index.heta
 
+#setNS nameless {type: abstract};
+
 // reactions
 r1 @Reaction {actors: 2s1 => p1} := (k1 * s1^2 - k2 * p1^2) * comp1;

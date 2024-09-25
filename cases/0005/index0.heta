@@ -2,5 +2,7 @@
     Create reaction in Heta notation with one substrate and one product.
 */
 
+#setNS nameless {type: abstract};
+
 // reaction of s1 degradation
 r1 @Reaction {actors: s1 => p1} := k1 * s1 * comp1;
