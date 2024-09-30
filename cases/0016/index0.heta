@@ -1,5 +1,5 @@
 /*
-    Create two compertement pharmacokinetic (PK) model  with bolus injection.
+    Create two compartement pharmacokinetic (PK) model  with bolus injection.
 */
 // index.heta
 t {units: hour};

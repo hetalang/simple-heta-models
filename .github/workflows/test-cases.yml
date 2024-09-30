@@ -23,7 +23,7 @@ jobs:
 
       - name: Scan cases and run tests
         run: |
-          files=$(find ./cases/*/index*.heta)
+          files=$(find ./cases/*/index*.heta ./validation/*/index*.heta)
           flag=0
           for file in $files; do
             echo -n "Processing $(basename $file) in directory $(dirname $file)... "
