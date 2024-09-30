@@ -1,0 +1,19 @@
+/*
+    One compartment model with first order absorption and elimination.
+    At time 0, a dose of 10 units is given to the system with bioavailablility 0.95.
+*/
+// index.heta
+
+V0 @Compartment .= 1;
+Vd @Compartment .= 5;
+
+A0 @Species { compartment: V0, isAmount: true } .= F * Dose;
+C1 @Species { compartment: Vd } .= 0;
+
+vabs @Reaction { actors: A0 = C1 } := kabs * A0;
+vel @Reaction { actors: C1 = } := kel * C1 * Vd;
+
+kabs @Const = 0.01;
+kel @Const = 1e-3;
+F @Const = 0.95;
+Dose @Const = 10;

@@ -1,0 +1,15 @@
+/*
+    Flux from vol1 to vol2 with a rate of 3 but only when vol1 has more than 10 units of water.
+*/
+//index.heta
+
+vol1 @Record .= 50; // Volume 1
+vol2 @Record .= 10; // Volume 2
+
+flux1 @Process { actors: => vol1 } := 2; // Constant inflow to volume 1
+flux2 @Process { actors: vol1 => vol2 } := vol1 >= 10 ? 3 : vol1 * 0.3; // Outflow from volume 1 to volume 2
+flux3 @Process { actors: vol2 => } := k_out * h; // Outflow from volume 2
+
+h @Record := vol2 / S; // Height of water in volume 2
+S @Const = 2;      // Cross-sectional area of volume 2
+k_out @Const = 0.1; // Outflow rate constant

@@ -1,0 +1,18 @@
+/*
+    Model in Heta format describing the flow of water between two volumes. Tanks and pipes.
+    Volume 1 (50) is the source and volume 2 (10) is the sink.
+    Rate of inflow to volume 1 is 2. Rate of outflow from volume 1 to volume 2 is 3.
+    Rate of outflow from volume 2 depends on the height of water in volume 2.
+*/
+//index.heta
+
+vol1 @Record .= 50; // Volume 1
+vol2 @Record .= 10; // Volume 2
+
+flux1 @Process { actors: => vol1 } := 2; // Constant inflow to volume 1
+flux2 @Process { actors: vol1 => vol2 } := 3; // Constant outflow from volume 1 to volume 2
+flux3 @Process { actors: vol2 => } := k_out * h; // Outflow from volume 2
+
+h @Record := vol2 / S; // Height of water in volume 2
+S @Const = 2;      // Cross-sectional area of volume 2
+k_out @Const = 0.1; // Outflow rate constant

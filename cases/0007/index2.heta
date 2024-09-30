@@ -1,0 +1,21 @@
+/*
+    Add units to the model: metre, second, metre^3.
+*/
+//index.heta
+
+t {units: second};
+
+vol1 @Record {units: metre^3} .= 50; // Volume 1
+vol2 @Record {units: metre^3} .= 10; // Volume 2
+
+flux1 @Process { actors: => vol1, units: metre^3/second } := 2; // Constant inflow to volume 1
+flux2 @Process { actors: vol1 => vol2, units: metre^3/second } := vol1 >= vol1_critical ? flux2_0 : vol1 * flux2_1; // Outflow from volume 1 to volume 2
+flux3 @Process { actors: vol2 =>, units: metre^3/second } := k_out * h; // Outflow from volume 2
+
+vol1_critical @Const {units: metre^3} = 10;
+flux2_0 @Const {units: metre^3/second} = 3;
+flux2_1 @Const {units: 1/second} = 0.3;
+
+h @Record {units: metre} := vol2 / S; // Height of water in volume 2
+S @Const {units: metre^2} = 2;      // Cross-sectional area of volume 2
+k_out @Const {units: metre^2/second} = 0.1; // Outflow rate constant
