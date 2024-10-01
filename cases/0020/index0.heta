@@ -1,0 +1,29 @@
+/*
+    The model consists of a single compartment with three species, one reaction, one record, one constant, and one switcher.
+    x1 and p1 values will be updated each time when 6-x1 threshold zero from negative to positive.
+*/
+
+// comments
+comp1 @Compartment .= 1;
+
+// species
+x1 @Species { compartment: comp1 , output: true} .= 10;
+x2 @Species { compartment: comp1, output: true } .= 0;
+x3 @Species { compartment: comp1, output: true } .= 12.12;
+
+// reactions
+r1 @Reaction { actors: x1 -> x2 } := k1 * x1 * comp1;
+
+// records
+p1 @Record {output: true} .= 10;
+
+// constants
+k1 @Const = 0.01;
+
+// switchers
+sw1 @CSwitcher {
+  trigger: 6 - x1,
+  active: true
+};
+x1 [sw1]= x1 + 10; // update x1
+p1 [sw1]= x1 * 2; // update p1
