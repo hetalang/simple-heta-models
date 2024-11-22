@@ -1,0 +1,21 @@
+/*
+    Create a model with 2 compartments and 2 species.
+    It also has Time event starting at 10 and repeat each 20 time units.
+    The event changes the rate of the first reaction to 0.5.
+*/
+
+// Compartments
+comp1 @Compartment .= 1;
+comp2 @Compartment .= 2;
+
+// Species
+s1 @Species .= 10;
+s2 @Species .= 20;
+
+// Reactions
+r1 @Reaction {actors: s1 + s2 -> s3} .= k1 * s1 * s2 * comp1; // mass action
+r2 @Reaction {actors: s3 -> s1 + s2} .= k2 * s3 * comp2; // mass action
+
+// Time event
+time_event @TimeEvent {start: 10, period: 20};
+s1 [time_event]= 0.5;

@@ -1,0 +1,27 @@
+/*
+    Create complete model with 3 compartments and 3 species.
+    Add possible reactions.
+    Set initial concentrations.
+    Set rate rules.
+    Set parameters.
+    Set compartments.
+    Set species. 
+*/
+
+// Compartments
+comp1 @Compartment .= 1;
+comp2 @Compartment .= 1.5;
+comp3 @Compartment .= 2;
+
+// Species
+s1 @Species {compartment: comp1} .= 10;
+s2 @Species {compartment: comp1} .= 20;
+s3 @Species {compartment: comp2} .= 30;
+
+// Reactions
+r1 @Reaction {actors: s1 + s2 -> s3} .= k1 * s1 * s2 * comp1; // mass action
+r2 @Reaction {actors: s3 -> s1 + s2} .= k2 * s3 * comp2; // mass action
+
+// Constants
+k1 @Const = 0.1;
+k2 @Const = 0.2;

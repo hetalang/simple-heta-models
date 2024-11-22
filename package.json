@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node js/create-prompt.js"
+  },
   "dependencies": {
     "dotenv": "^16.4.5",
     "glob": "^10.4.2",
