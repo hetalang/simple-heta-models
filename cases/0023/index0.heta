@@ -1,0 +1,69 @@
+/*
+  Collection of reaction rates
+*/
+
+#setNS {type: abstract}; // set default namespace as abstract
+
+// competetive inhibition
+r1 @Reaction {actors: S =>, modifiers: [I]};
+r1 := Vmax * S / (Km * (1 + I / Ki) + S);
+
+// non-competitive inhibition
+r2 @Reaction {actors: S =>, modifiers: [I]};
+r2 := Vmax * S / (Km + S) / (1 + I / Ki);
+
+// uncompetitive inhibition
+r3 @Reaction {actors: S =>, modifiers: [I]};
+r3 := Vmax * S / (Km + S * (1 + I / Kii));
+
+// mixed inhibition
+r4 @Reaction {actors: S =>, modifiers: [I]};
+r4 := Vmax * S / (Km * (1 + I / Ki) + S * (1 + I / Kii));
+
+// non-productive binding
+r5 @Reaction {actors: S =>};
+r5 := Vmax * S / (Km + S + Km * S / Knp);
+
+// substrate inhibition
+r6 @Reaction {actors: S =>};
+r6 := Vmax * S / (Km + S + S^2 / Ksi);
+
+// random bi-bi
+r7 @Reaction {actors: S1 + S2 =>};
+r7 := Vmax * S1 * S2 / (Km1 * Km2 + Km2 * S1 + Km1 * S2 + S1 * S2);
+
+// ordered bi-bi
+r8 @Reaction {actors: S1 + S2 =>};
+r8 := Vmax * S1 * S2 / (Km1 * Km2 + Km2 * S1 + Km1 * S2);
+
+// ping-pong
+r9 @Reaction {actors: S1 + S2 =>};
+r9 := Vmax * S1 * S2 / (Km1 * Km2 + Km2 * S1 + Km1 * S2);
+
+// ternary complex
+r10 @Reaction {actors: S1 + S2 =>};
+r10 := Vmax * S1 * S2 / (Km1 * Km2 + Km2 * S1 + Km1 * S2 + S1 * S2 / Ktc);
+
+// pH dependence, active when protonated
+r11 @Reaction {actors: S =>};
+r11 := Vmax * S / (Km + S) / (1 + 10^(pH - pKa));
+
+// pH dependence, active when deprotonated
+r12 @Reaction {actors: S =>};
+r12 := Vmax * S / (Km + S) / (1 + 10^(pKa - pH));
+
+// temperature dependence, Arrhenius equation
+r13 @Reaction {actors: S =>};
+r13 := Vmax * S / (Km + S) * exp(-Ea / R / T);
+
+// temperature dependence, van't Hoff equation
+r15 @Reaction {actors: S =>};
+r15 := Vmax * S / (Km + S) * exp(-DeltaH / R * (1 / T - 1 / Tref));
+
+// temperature dependence, Q10
+r16 @Reaction {actors: S =>};
+r16 := Vmax * S / (Km + S) * Q10^((T - Tref) / 10);
+
+// Hill equation
+r17 @Reaction {actors: S =>};
+r17 := Vmax * S^h / (Km^n + S^h);

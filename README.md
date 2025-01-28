@@ -5,6 +5,12 @@
 
 Collection of [Heta models](https://hetalang.github.io) for different testing needs
 
+## Creating prompts
+
+```bash
+npm start
+```
+
 ## Authors
 
 Heta project
