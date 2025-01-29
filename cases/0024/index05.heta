@@ -1,0 +1,8 @@
+/*
+  Non-productive binding reaction rate
+*/
+
+#setNS {type: abstract}; // set default namespace as abstract
+
+r5 @Reaction {actors: S =>};
+r5 := Vmax * S / (Km + S + Km * S / Knp);

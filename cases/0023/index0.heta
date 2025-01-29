@@ -1,5 +1,5 @@
 /*
-  Collection of reaction rates
+  Create collection of different types of enzyme inhibition models.
 */
 
 #setNS {type: abstract}; // set default namespace as abstract

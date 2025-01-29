@@ -1,0 +1,8 @@
+/*
+  Ping-pong reaction rate
+*/
+
+#setNS {type: abstract}; // set default namespace as abstract
+
+r9 @Reaction {actors: S1 + S2 =>};
+r9 := Vmax * S1 * S2 / (Km1 * Km2 + Km2 * S1 + Km1 * S2);

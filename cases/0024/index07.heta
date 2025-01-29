@@ -1,0 +1,8 @@
+/*
+  Random bi-bi reaction rate
+*/
+
+#setNS {type: abstract}; // set default namespace as abstract
+
+r7 @Reaction {actors: S1 + S2 =>};
+r7 := Vmax * S1 * S2 / (Km1 * Km2 + Km2 * S1 + Km1 * S2 + S1 * S2);

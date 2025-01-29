@@ -1,0 +1,8 @@
+/*
+  pH dependence, active when deprotonated
+*/
+
+#setNS {type: abstract}; // set default namespace as abstract
+
+r12 @Reaction {actors: S =>};
+r12 := Vmax * S / (Km + S) / (1 + 10^(pKa - pH));

@@ -1,0 +1,8 @@
+/*
+  Non-competitive inhibition reaction rate
+*/
+
+#setNS {type: abstract}; // set default namespace as abstract
+
+r2 @Reaction {actors: S =>, modifiers: [I]};
+r2 := Vmax * S / (Km + S) / (1 + I / Ki);

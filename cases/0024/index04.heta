@@ -1,0 +1,8 @@
+/*
+  Mixed inhibition reaction rate
+*/
+
+#setNS {type: abstract}; // set default namespace as abstract
+
+r4 @Reaction {actors: S =>, modifiers: [I]};
+r4 := Vmax * S / (Km * (1 + I / Ki) + S * (1 + I / Kii));

@@ -1,0 +1,8 @@
+/*
+  Substrate inhibition reaction rate
+*/
+
+#setNS {type: abstract}; // set default namespace as abstract
+
+r6 @Reaction {actors: S =>};
+r6 := Vmax * S / (Km + S + S^2 / Ksi);

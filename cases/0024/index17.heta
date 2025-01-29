@@ -1,0 +1,8 @@
+/*
+  Hill equation
+*/
+
+#setNS {type: abstract}; // set default namespace as abstract
+
+r17 @Reaction {actors: S =>};
+r17 := Vmax * S^h / (Km^n + S^h);
