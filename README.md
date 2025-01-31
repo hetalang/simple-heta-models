@@ -11,6 +11,13 @@ Collection of [Heta models](https://hetalang.github.io) for different testing ne
 npm start
 ```
 
+## To do
+
+- [ ] Common structure and comments for all examples
+- [ ] Receptor-ligand binding, Receptor activation
+- [ ] Different namespaces
+- [ ] Specific options: isAmount, boundary, etc.
+
 ## Authors
 
 Heta project
